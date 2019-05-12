@@ -1,7 +1,7 @@
 const summary = require('./summary.js');
 
 module.exports = {
-    title: 'エディタをつくる',
+    title: 'エディタをつくろう',
     description: '編集を始 (し) てね！',
     locales: {
         '/': {
