@@ -25,7 +25,7 @@ module.exports = {
     },
     head: [
         ['link', { rel: 'icon', type: 'image/png', href: '/img/favicon.png' }],
-        ['link', { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap' }]
+        ['link', { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap&subset=japanese' }]
     ],
     base: '/making-editor/',
     dest: '.vuepress/dist',
