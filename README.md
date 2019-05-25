@@ -27,8 +27,7 @@ Pictures of C202SA are derived from [C202SA Gallery](https://www.asus.com/us/Com
 
 ![cc by-sa](https://i.creativecommons.org/l/by-sa/4.0/88x31.png)  
 
-[![Build Status](https://travis-ci.org/jamcha-aa/making-editor.svg?branch=master)](https://travis-ci.org/jamcha-aa/making-editor)  
-
-Written with [Annin](https://jamcha-aa.github.io/Annin)
+[![Build Status](https://travis-ci.org/jamcha-aa/making-editor.svg?branch=master)](https://travis-ci.org/jamcha-aa/making-editor)
+[![written with Annin](https://rawcdn.githack.com/jamcha-aa/Annin/58aae5ac65e3d2ebb682957b957d2336a80cabf2/assets/Annin.svg)](https://jamcha-aa.github.io/Annin)
 
 Published with [VuePress](https://vuepress.vuejs.org/)
