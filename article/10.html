@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>10 - Vueのデータバインディングなるもの | エディタをつくろう</title>
+    <meta name="description" content="編集を始 (し) てね！">
+    <link rel="icon" type="image/png" href="/making-editor/img/favicon.png">
+    
+    <link rel="preload" href="/making-editor/assets/css/0.styles.0632e4f2.css" as="style"><link rel="preload" href="/making-editor/assets/js/app.380ab96b.js" as="script"><link rel="preload" href="/making-editor/assets/js/2.0d2e3727.js" as="script"><link rel="preload" href="/making-editor/assets/js/11.45eb035d.js" as="script"><link rel="prefetch" href="/making-editor/assets/js/10.69e08f8b.js"><link rel="prefetch" href="/making-editor/assets/js/12.6ec8c664.js"><link rel="prefetch" href="/making-editor/assets/js/13.f7766236.js"><link rel="prefetch" href="/making-editor/assets/js/14.77b4414e.js"><link rel="prefetch" href="/making-editor/assets/js/15.6ec1412f.js"><link rel="prefetch" href="/making-editor/assets/js/16.bf9553a5.js"><link rel="prefetch" href="/making-editor/assets/js/17.3fa67f0e.js"><link rel="prefetch" href="/making-editor/assets/js/3.301e313d.js"><link rel="prefetch" href="/making-editor/assets/js/4.4acd9173.js"><link rel="prefetch" href="/making-editor/assets/js/5.0eaf0422.js"><link rel="prefetch" href="/making-editor/assets/js/6.8398b4ac.js"><link rel="prefetch" href="/making-editor/assets/js/7.b7c99ac5.js"><link rel="prefetch" href="/making-editor/assets/js/8.72fbc371.js"><link rel="prefetch" href="/making-editor/assets/js/9.97188c3b.js">
+    <link rel="stylesheet" href="/making-editor/assets/css/0.styles.0632e4f2.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/making-editor/" class="home-link router-link-active"><!----> <span class="site-name">エディタをつくろう</span></a> <div class="links"><!----> <nav class="nav-links can-hide"><div class="nav-item"><a href="/making-editor/" class="nav-link">ホーム</a></div><div class="nav-item"><a href="https://jamcha-aa.github.io/About/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  作品一覧
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="nav-item"><a href="https://github.com/jamcha-aa/making-editor/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/making-editor/" class="nav-link">ホーム</a></div><div class="nav-item"><a href="https://jamcha-aa.github.io/About/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  作品一覧
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="nav-item"><a href="https://github.com/jamcha-aa/making-editor/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>目次</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/making-editor/article/01.html" class="sidebar-link">01 - 私のChromebookのために</a></li><li><a href="/making-editor/article/02.html" class="sidebar-link">02 - ChromebookでVue</a></li><li><a href="/making-editor/article/03.html" class="sidebar-link">03 - いきなり完成！？</a></li><li><a href="/making-editor/article/04.html" class="sidebar-link">04 - サイズを変える</a></li><li><a href="/making-editor/article/05.html" class="sidebar-link">05 - 限界を超える</a></li><li><a href="/making-editor/article/06.html" class="sidebar-link">06 - その名は Annin (杏仁)</a></li><li><a href="/making-editor/article/07.html" class="sidebar-link">07 - 着せ替えを超える</a></li><li><a href="/making-editor/article/08.html" class="sidebar-link">08 - —— Chromebook、問題発生だ。</a></li><li><a href="/making-editor/article/09.html" class="sidebar-link">09 - GitHub Pagesにリリース</a></li><li><a href="/making-editor/article/10.html" class="active sidebar-link">10 - Vueのデータバインディングなるもの</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/making-editor/article/10.html#文字カウント機能" class="sidebar-link">文字カウント機能</a></li><li class="sidebar-sub-header"><a href="/making-editor/article/10.html#ファイルを開く機能" class="sidebar-link">ファイルを開く機能</a></li><li class="sidebar-sub-header"><a href="/making-editor/article/10.html#v-drag" class="sidebar-link">v-drag</a></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="content default"><h1 id="_10-vueのデータバインディングなるもの"><a href="#_10-vueのデータバインディングなるもの" aria-hidden="true" class="header-anchor">#</a> 10 - Vueのデータバインディングなるもの</h1> <h2 id="文字カウント機能"><a href="#文字カウント機能" aria-hidden="true" class="header-anchor">#</a> 文字カウント機能</h2> <p>「そういえばたまたまなんだけどさ」<br>
+『はい。何ですか？』<br>
+「たまたまmavonEditorがVue製だったからなんだけどさ」</p> <p>『…はい』私の遠回しな言い方にC202SAは少しじれったい様子で返事をする。</p> <p>「めんどくさいから後回しにしてた『文字数カウント』、一行でできちゃったんだよね」<br>
+『ええー！？』<br>
+「すごいでしょ」<br>
+『は、はい…でもどうやったんですか？』<br>
+「えっとね、前に、 <code>&lt;mavonEditor&gt;</code> のなかで <code>v-model=&quot;value&quot;</code> って書いたでしょ？あれ書いたときは全然意味わからなかったんだけど、あれでVueのデータバインディングとかいう便利な機能が使えるらしくて」<br>
+『う、うーん、そうなんですね…』<br>
+「文字数を画面に表示したいなら <code>&lt;template&gt;</code> に一行書けばおしまい」</p> <div class="language-vue extra-class"><pre class="language-vue"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span> {{ value.length }} <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><p>「これでテキストエリアに文章を書くと勝手に文字数を表示してくれる」<br>
+『え？これだけ？』<br>
+「これだけ。あと単語数をカウントする場合もこれだけ」</p> <div class="language-vue extra-class"><pre class="language-vue"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span> {{ value.trim().split(/\s+/).length }} <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><p>「半角スペースで区切る処理を入れるから少し複雑だけど、でもこれだけ」<br>
+『すごいですね…』<br>
+「でしょ。でね、エディタだったらさ、やっぱり『ファイルを開く』って機能、欲しいじゃない？」<br>
+『そうですね、保存ができるくらいですから…あ』</p> <p>私の思っていることを察し、C202SAが訝しむ。『まさか…それもなんとかっていう機能で…』</p> <p>「ふっふっふ…その通りでございます…」</p> <h2 id="ファイルを開く機能"><a href="#ファイルを開く機能" aria-hidden="true" class="header-anchor">#</a> ファイルを開く機能</h2> <p><a href="https://alligator.io/vuejs/file-reader-component/" target="_blank" rel="noopener noreferrer">Creating a Vue.js File Reader Component Using the FileReader API<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <p>「この記事に書かれたプログラムがMITライセンスだったのでそのまま使わせてもらいました。それで <code>App.vue</code> のscriptsのところにちょこっと書けばおしまい」</p> <div class="language-vue extra-class"><pre class="language-vue"><code>
+export default {
+
+...
+
+  components: {
+    TextReader
+  },
+  
+...
+}
+</code></pre></div><p>『ファイルを開くのになんとかっていう機能が使えるなら、ファイルを保存するのにも使えそうですね』<br>
+「そうかもしれない…けど、余計なことを言わないでほしい…私がへっぽこなのを忘れないでほしい…」<br>
+『す、すみません…』</p> <p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFwAAABXCAMAAAC+9tKpAAABYlBMVEX////8/PyUl5T4+PiampoAAADh4eHNzc0uLi7///Lu7u7r6+vo6Oi8vLwoKCiurq6rq6t1dXVbW1tUVFRDQ0M7OzskJCTy8vLk5OShoaGUlJSAgIB8fHx5eXlRUVHd3d3N0N3Q0NC2tbaysrKkpKSXl5eQkJCNjY2GhocXFxf19fXa2trX19fT09PGxsa/v7+KioqDg4NlZWVhYWFXV1dGRkYzMzP8//9zcXNvb29NTU0SEhIJCQnq+P/JycnDw8O5ublra2toaGheXl5KSkpAQEAcHBz1/v/q/P/j9f/P3Pn+//jh5PTQ2vC/093/99e1u9LDzdD/8s2+ws3+7sjPy8iyssi/vMbYw7/rwLXNu6bDsqHr8vjd4fLk5O7//+vX1+S81+S/zeS/1+HT0Nr86Nerw9eovNf15NPkzbzaubWDl7WQl7LauaiklJ6Nip6empqroZSDl5SampCUl4aNhnmA/hcoAAACc0lEQVRYw+zTya6iYBAF4PPn9yIBZAZlDgIiznOc4qzv/0gtoHvSnbvohG9VqcXJWVShVqvVarX/SxgF+FvtnpipY4CMli/R5cDNfgoaj1LP6yB3WrxEJwDXNw+G1K6YnSVdlR1j5Otdy1gOKNN6m29mKAlKilzLWFs9PRYWxkzWzIiggg7rAMH+SmX2DDI1ZOSY7UpA6ex18TbYrUKAEkwYoKMrQoVsMjzIAJeyfLoRgKHqFVt5HeGjoQyL4mubAF/akkEFjGkD7UQcWewYCNR7sdypbZTa3rwIjTUp710SdI9HBfydnXR6mRlONsugeTtqeLvsE3yEnoycvfIeR9MuM2U2pqiABP7xoKaiMIjYo7lb3ADQ5DnBh6SEyPUzXWL6rJWHcv5qjGoIpVyfJflARqpbHIjfQYmm7qBsvu8CnLbtAMRlI4rKGFVD4WQ0AIy0BUFp6FooxL4MYLkYAolocxV7EwLaEiUQCvD9dV65+VDwcVFOKIz9eRvM3uXRMOcCquF3vpSKK4qm7kpbM8Hb5OmgROzrt2Rv45xvxoU0XvdoOp3yVb6INh+Z6AwAztoc9PjzjDOUGOc7gcbPbN2iof5TkCj+1VTp4tdYVwa/hZ87qNVqtT/t0kkOgkAQheFKpxPTtzCuvIFuWKMCioCC4DzPs/cXXEi7tti97wB/XlIFAH9YJSK1blIBVG9ZI5qEUyqAKpXTuLW7iczz4LDHt8lVfjzqVSk3Q864V5mb9NXpjxnjVuTr5xzMDMZ4EDqkD7eJMR51G/rwtsEYj/0W5Tx3xPnn55/he8bhpOKjPjxwbWJ0et1F7rIwCQAAACDzBuB1STPzQGzdAAAAAElFTkSuQmCC" alt="toolbox"></p> <p>「この文字カウントと単語カウント、それにファイルを開く機能は全部データバインディングのおかげ」<br>
+『なんか、ほんとのエディタみたいですね』<br>
+「あれ？何かすごく馬鹿にされたような」<br>
+『きっ、気のせいです！ははは…あ、ちょっといいですか？』<br>
+「なに」<br>
+『ぼくの勘違いかもしれませんけど、色、薄くないですか？あと…』<br>
+「どうしてこんな目につかないところにあるのかって？」<br>
+『…はい』<br>
+「わざとです」<br>
+『そうなんですか』<br>
+「文字打つたびに目の前で数字がちょこちょこ変わるなんて気が散って気が散って画面を付箋で」<br>
+『ご、ごめんなさい！ぼくが悪かったです！少し休みましょ！ね！』</p> <h2 id="v-drag"><a href="#v-drag" aria-hidden="true" class="header-anchor">#</a> v-drag</h2> <p>私はジンジャーティーをすすり、腹部が温まるのを感じながら言った。「ここだけの話、右上にあるのにも理由がありまして」<br>
+『はい』<br>
+「文章は画面の下の方に書いていくから文字カウンタが下にあると気になる」<br>
+『…はい』<br>
+「あと画面の左上はついつい注意が向いちゃう場所だから気になる」<br>
+『…それで右上なんですね』<br>
+「うん。でもやっぱテキストエリアの近くに寄せたい人はいると思う」<br>
+『そうですね…』<br>
+「だから動かせるようにしました！ <a href="https://github.com/branu-ws/v-drag" target="_blank" rel="noopener noreferrer">v-drag<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> で！」</p> <p><img src="/making-editor/assets/img/v-drag.7070a5e5.png" alt="v-drag"></p> <p>『ええ！？なんかいきなりすごいんですが！？』<br>
+「でしょ！ほめてほめて！」<br>
+『すごい！ほんとにすごいです！』<br>
+「あ、すごいのはv-dragなので、いちおう…。それで、やりかたなんだけど、まずtemplateのなかで動かしたいものを <code>v-drag</code> で囲みます」</p> <div class="language-vue extra-class"><pre class="language-vue"><code>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>block<span class="token punctuation">&quot;</span></span> <span class="token attr-name">v-drag</span><span class="token punctuation">&gt;</span></span>
+    
+    ...
+    
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><p>「次にscriptのなかにちょこっと追加」</p> <div class="language-vue extra-class"><pre class="language-vue"><code>import drag from '@branu-jp/v-drag';
+
+...
+
+export default {
+
+...
+
+    directives: {
+      drag
+    }
+
+...
+
+}
+</code></pre></div><p>「あとはblockのサイズとかをcssで書けばおしまい」<br>
+『これ、Annin本体の位置も動かせそうですね』<br>
+「そうそう。Photoshopみたいにね。Anninの画面サイズを自由に変えられるようになったら試してみたい」</p> <br> <br>
+(c) 2019 jamcha (jamcha.aa@gmail.com).
+<p><img src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" alt="cc by-sa"></p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/making-editor/article/09.html" class="prev">
+          09 - GitHub Pagesにリリース
+        </a></span> <!----></p></div> </main></div><div class="global-ui"><!----></div></div>
+    <script src="/making-editor/assets/js/app.380ab96b.js" defer></script><script src="/making-editor/assets/js/2.0d2e3727.js" defer></script><script src="/making-editor/assets/js/11.45eb035d.js" defer></script>
+  </body>
+</html>
